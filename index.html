@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Flecheiro | Autenticidade e Pureza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --ouro: #c5a059;
+            --ouro-gradiente: linear-gradient(135deg, #8a6d3b 0%, #e1c27d 50%, #8a6d3b 100%);
+            --verde-profundo: #04120b;
+            --verde-selo: #0a2b1a;
+            --branco-creme: #f4f1ea;
+        }
+
+        body {
+            background-color: var(--verde-profundo);
+            background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
+            color: var(--branco-creme);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden;
+        }
+
+        .main-wrapper { width: 100%; max-width: 900px; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+
+        header { text-align: center; margin-bottom: 60px; }
+        
+        /* Imagem que você enviou centralizada e pequena */
+        .img-topo {
+            width: 100px; /* Tamanho pequeno solicitado */
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.5));
+        }
+
+        header h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 4rem); color: var(--ouro); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 5px; }
+        header p { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 4px; color: var(--ouro); opacity: 0.8; }
+
+        .card-validacao {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 50px 20px;
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .loader {
+            width: 40px; height: 40px;
+            border: 2px solid rgba(197, 160, 89, 0.2);
+            border-top: 2px solid var(--ouro);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .manifesto { margin-top: 60px; padding: 30px; border-left: 2px solid var(--ouro); background: rgba(197,160,89,0.03); text-align: justify; }
+        .manifesto h3 { font-family: 'Cinzel', serif; color: var(--ouro); margin-bottom: 15px; text-align: center; }
+        .manifesto p { line-height: 1.6; margin-bottom: 15px; font-size: 0.95rem; }
+
+        /* DESIGN DO SELO CIRCULAR (BALÃO) */
+        #resultado {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .selo-circular {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1 / 1;
+            background: var(--verde-selo);
+            border-radius: 50%;
+            border: 10px double var(--ouro);
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+            animation: zoomIn 0.5s ease-out;
+        }
+
+        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .selo-titulo { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--ouro); margin-bottom: 15px; border-bottom: 1px solid rgba(197, 160, 89, 0.3); padding-bottom: 10px; width: 80%; }
+
+        .info-balao { color: #fff; font-size: 0.85rem; line-height: 1.5; width: 90%; text-align: left; }
+        .info-balao p { margin-bottom: 10px; }
+        .info-balao strong { color: var(--ouro); text-transform: uppercase; font-size: 0.7rem; display: block; letter-spacing: 1px; }
+
+        .btn-voltar {
+            margin-top: 20px;
+            background: transparent;
+            border: 1px solid var(--ouro);
+            color: var(--ouro);
+            padding: 10px 25px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+        }
+
+        footer { margin-top: auto; padding: 30px; font-size: 0.7rem; opacity: 0.4; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <header>
+        <img src="https://i.ibb.co/4Rcbdpmf/image.png" alt="Símbolo Flecheiro" class="img-topo">
+        <h1>Flecheiro</h1>
+        <p>A Pureza do Fundamento</p>
+    </header>
+
+    <main style="width: 100%;">
+        <div class="card-validacao">
+            <div class="loader" id="loader"></div>
+            <p id="status-text" style="font-family: 'Cinzel', serif; color: var(--ouro); letter-spacing: 2px;">AGUARDANDO LEITURA DO PRODUTO...</p>
+        </div>
+
+        <section class="manifesto">
+            <h3>A Verdadeira e Única Marca Flecheiro</h3>
+            <p>No universo religioso, a <strong>pureza do material</strong> é o que sustenta a força do seu ritual. A Flecheiro não produz em massa; nós consagramos. Cada item é selecionado sob os mais rígidos preceitos de pureza.</p>
+            <p><strong>Não existe meio termo:</strong> ou é Flecheiro, ou é uma imitação sem fundamento. Somente os nossos produtos garantem que a conexão entre o médium e a entidade ocorra sem interferências sintéticas. Exija o selo, valide o código e proteja seu Axé.</p>
+        </section>
+    </main>
+
+    <footer>&copy; 2024 Flecheiro - Tradição e Fundamento.</footer>
+</div>
+
+<div id="resultado">
+    <div class="selo-circular">
+        <div style="font-size: 30px; margin-bottom: 5px;">🏹</div>
+        <h2 class="selo-titulo">CERTIFICADO ORIGINAL</h2>
+        
+        <div class="info-balao" id="detalhes-texto">
+            </div>
+
+        <div style="margin-top: 15px; font-family: 'Cinzel', serif; color: var(--ouro); font-weight: bold; font-size: 0.9rem;">CONSECRADO & AUTÊNTICO</div>
+
+        <button class="btn-voltar" onclick="window.location.href=window.location.pathname">VOLTAR</button>
+    </div>
+</div>
+
+<script>
+    // BANCO DE DADOS INTERNO
+    const BANCO_DADOS = {
+        "FLX777": { 
+            item: "Guia de Proteção Superior", 
+            mat: "Cristal e Miçangas de Vidro", 
+            cons: "21/01/2026", 
+            orig: "Sede Flecheiro - SP" 
+        }
+    };
+
+    window.onload = function() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        if (id) {
+            const code = id.toUpperCase();
+            document.getElementById('loader').style.display = "block";
+            document.getElementById('status-text').innerText = "ANALISANDO FUNDAMENTO...";
+            
+            setTimeout(() => {
+                const produto = BANCO_DADOS[code];
+                if (produto) {
+                    exibirSelo(code, produto);
+                } else {
+                    document.getElementById('loader').style.display = "none";
+                    document.getElementById('status-text').innerText = "CÓDIGO INVÁLIDO";
+                    document.getElementById('status-text').style.color = "#ff4444";
+                }
+            }, 1800);
+        }
+    };
+
+    function exibirSelo(code, dados) {
+        document.getElementById('detalhes-texto').innerHTML = `
+            <p><strong>PRODUTO:</strong> ${dados.item}</p>
+            <p><strong>MATÉRIA-PRIMA:</strong> ${dados.mat}</p>
+            <p><strong>CONSAGRAÇÃO:</strong> ${dados.cons}</p>
+            <p><strong>ORIGEM:</strong> ${dados.orig}</p>
+            <p><strong>SÉRIE:</strong> ${code}</p>
+        `;
+        document.getElementById('resultado').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+</script>
+
+</body>
+</html>
