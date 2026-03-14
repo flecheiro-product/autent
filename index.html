@@ -150,7 +150,7 @@
         <div class="info-balao" id="detalhes-texto">
             </div>
 
-        <div style="margin-top: 15px; font-family: 'Cinzel', serif; color: var(--ouro); font-weight: bold; font-size: 0.9rem;">CONSECRADO & AUTÊNTICO</div>
+        <div style="margin-top: 15px; font-family: 'Cinzel', serif; color: var(--ouro); font-weight: bold; font-size: 0.9rem;">FORMULADO & AUTÊNTICO</div>
 
         <button class="btn-voltar" onclick="window.location.href=window.location.pathname">VOLTAR</button>
     </div>
@@ -159,11 +159,11 @@
 <script>
     // BANCO DE DADOS INTERNO
     const BANCO_DADOS = {
-        "FLX777": { 
-            item: "Guia de Proteção Superior", 
-            mat: "Cristal e Miçangas de Vidro", 
-            cons: "21/01/2026", 
-            orig: "Sede Flecheiro - SP" 
+        "FCLBDSJ220": { 
+            item: "BANHO DESCARGA DE SÃO JORGE", 
+            mat: "ERVAS SAGRADAS DA UMBANDA", 
+            lote: "26213", 
+            orig: "Sede Flecheiro - AM" 
         }
     };
 
@@ -174,7 +174,7 @@
         if (id) {
             const code = id.toUpperCase();
             document.getElementById('loader').style.display = "block";
-            document.getElementById('status-text').innerText = "ANALISANDO FUNDAMENTO...";
+            document.getElementById('status-text').innerText = "ANALISANDO PRODUTO...";
             
             setTimeout(() => {
                 const produto = BANCO_DADOS[code];
