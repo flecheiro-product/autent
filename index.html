@@ -65,7 +65,6 @@
         .manifesto h3 { font-family: 'Cinzel', serif; color: var(--ouro); margin-bottom: 15px; text-align: center; }
         .manifesto p { line-height: 1.6; margin-bottom: 15px; font-size: 0.95rem; }
 
-        /* DESIGN DO SELO CIRCULAR */
         #resultado {
             display: none;
             position: fixed;
@@ -115,22 +114,22 @@
 
         footer {
             margin-top: auto;
-            padding: 40px 20px;
+            padding: 50px 20px 30px;
             font-size: 0.75rem;
-            opacity: 0.6;
+            opacity: 0.7;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            border-top: 1px solid rgba(197, 160, 89, 0.12);
+            gap: 16px;
+            border-top: 1px solid rgba(197, 160, 89, 0.15);
         }
 
         footer svg {
-            max-width: 160px;
+            max-width: 220px;
             height: auto;
-            opacity: 0.7;
-            filter: drop-shadow(0 0 6px rgba(197, 160, 89, 0.3));
+            opacity: 0.85;
+            filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.4));
         }
     </style>
 </head>
@@ -160,21 +159,23 @@
         <svg 
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 800 600" 
-            width="140" 
+            width="180" 
             role="img" 
-            aria-label="Símbolo Flecheiro - Autenticidade e Tradição"
+            aria-label="Logotipo Flecheiro - Símbolo de Autenticidade"
         >
           <g fill="#ffffff">
+            <!-- Paths limpos e sem duplicatas excessivas -->
             <path d="M54.5,148.2h8.2l28.4-74.8h-8.5l-24,63.5l-24-63.5h-8.5L54.5,148.2z M125.4,73.4v74.8h7.8V86.2l45.2,62h6.5V73.4h-7.8v61.8l-45.2-61.8H125.4z M214.8,73.4v74.8h7.8V73.4H214.8z M261.2,73.4v74.8h7.8V81.2l32.5,67h5.8l32.5-67v67h7.8V73.4h-10.2l-33,68.2l-33-68.2H261.2z M418.5,148.2h8.2l28.4-74.8h-8.5l-24,63.5l-24-63.5h-8.5L418.5,148.2z M484.2,148.2h38.2v-7.2h-30.4v-27.5h27.8v-7.2h-27.8v-25.8h30.4v-7.2h-38.2V148.2z"/>
-            <path d="M48.2,242.4h54.8v-8.5H79.5v-65.2h-8.5v65.2H48.2V242.4z M124.5,242.4h38.2v-8.5H133v-27.5h27.8v-8.5H133v-25.8h30.4v-8.5h-38.2V242.4z M185.4,228.4c3.5,4.2,8.8,6.8,15.2,6.8c8.5,0,13.8-4.8,13.8-11.5c0-18.8-31.5-12.8-31.5-35.2c0-10.5,8.8-18.8,21.5-18.8c8.2,0,14.5,3.2,18.8,8.2l-5.5,5.8c-3.2-3.8-7.8-5.8-13.2-5.8c-7.8,0-12.8,4.5-12.8,10.2c0,18.2,31.5,12.2,31.5,35.2c0,11.8-9.8,20.2-22.5,20.2c-9.5,0-16.8-3.8-21.5-9.8L185.4,228.4z M255.4,242.4h54.8v-8.5h-23.2v-65.2h-8.5v65.2h-23.2V242.4z M325.2,208.2h35.8v-8.5h-35.8V208.2z M375.4,242.4h54.8v-8.5h-23.2v-65.2h-8.5v65.2h-23.2V242.4z M454.2,242.4h38.2v-8.5H462.8v-27.5h27.8v-8.5h462.8v-25.8h30.4v-8.5h-38.2V242.4z M518.2,242.4h38.2v-8.5h-29.8v-27.5h27.8v-8.5h-27.8v-25.8h30.4v-8.5h-38.2V242.4z"/>
+            <path d="M48.2,242.4h54.8v-8.5H79.5v-65.2h-8.5v65.2H48.2V242.4z M124.5,242.4h38.2v-8.5H133v-27.5h27.8v-8.5H133v-25.8h30.4v-8.5h-38.2V242.4z M185.4,228.4c3.5,4.2,8.8,6.8,15.2,6.8c8.5,0,13.8-4.8,13.8-11.5c0-18.8-31.5-12.8-31.5-35.2c0-10.5,8.8-18.8,21.5-18.8c8.2,0,14.5,3.2,18.8,8.2l-5.5,5.8c-3.2-3.8-7.8-5.8-13.2-5.8c-7.8,0-12.8,4.5-12.8,10.2c0,18.2,31.5,12.2,31.5,35.2c0,11.8-9.8,20.2-22.5,20.2c-9.5,0-16.8-3.8-21.5-9.8L185.4,228.4z M255.4,242.4h54.8v-8.5h-23.2v-65.2h-8.5v65.2h-23.2V242.4z M325.2,208.2h35.8v-8.5h-35.8V208.2z M375.4,242.4h54.8v-8.5h-23.2v-65.2h-8.5v65.2h-23.2V242.4z M454.2,242.4h38.2v-8.5H462.8v-27.5h27.8v-8.5H462.8v-25.8h30.4v-8.5h-38.2V242.4z M518.2,242.4h38.2v-8.5h-29.8v-27.5h27.8v-8.5h-27.8v-25.8h30.4v-8.5h-38.2V242.4z"/>
             <rect x="48.2" y="278.5" width="160" height="2"/>
             <rect x="305" y="278.5" width="160" height="2"/>
             <path d="M48.2,350.5l45.2,120.5h10.2l45.2-120.5h-15.5l-34.8,95.5l-34.8-95.5H48.2z M175.4,471h65.8v-14.2H192v-42.5h45.2v-14.2H192v-35.5h60.2v-14.2h-76.8V471z M265.4,410.5c0-38.5,25.8-65.5,65.2-65.5c28.5,0,48.5,15.2,58.2,38.5l-14.2,6.5c-7.2-18.8-22.5-30.8-44-30.8c-30.5,0-49.8,21.8-49.8,51.2s19.2,51.2,49.8,51.2c18.5,0,34.5-8.5,42.5-22.8v-22.5h-45.2v-14.2h59.5V471h-10.2l-3.5-12.5c-10.5,10.8-26.5,18.2-46.2,18.2C291.2,476,265.4,449,265.4,410.5z M415.2,471h12.5l55.2-120.5h-15.2l-45.2,100.2l-45.2-100.2h-15.2L415.2,471z M505.4,471h12.8l45.2-120.5h-12.8L511.8,450l-38.5-99.5h-12.8L505.4,471z"/>
-            <path d="M645,475c-25-5-35-25-30-55c15-80,85-280,105-310c15-20,35-15,40,10c10,60-30,180-55,240c40-70,100-240,130-245c25-5,35,15,20,55c-30,85-110,240-145,260c10,15,35,25,65,10c5-2,10,5,5,10c-40,40-100,20-130-35c-5,5-10,15-10,35c0,40,40,55,75,45c5-2,8,5,2,8c-45,25-105,10-125-45c-2-5-5-5-2,3z M735,420c5,0,10-5,10-10s-5-10-10-10s-10,5-10,10S730,420,735,420z" />
+            <!-- Parte final (detalhe circular) mantida -->
+            <path d="M645,475c-25-5-35-25-30-55c15-80,85-280,105-310c15-20,35-15,40,10c10,60-30,180-55,240c40-70,100-240,130-245c25-5,35,15,20,55c-30,85-110,240-145,260c10,15,35,25,65,10c5-2,10,5,5,10c-40,40-100,20-130-35c-5,5-10,15-10,35c0,40,40,55,75,45c5-2,8,5,2,8c-45,25-105,10-125-45c-2-5-5-5-2,3z M735,420c5,0,10-5,10-10s-5-10-10-10s-10,5-10,10S730,420,735,420z"/>
           </g>
         </svg>
 
-        <div>© 2026 Flecheiro - Tradição e Fundamento.</div>
+        <div>© 2026 Flecheiro - Tradição e Fundamento</div>
     </footer>
 </div>
 
@@ -183,8 +184,7 @@
         <div style="font-size: 30px; margin-bottom: 5px;">🏹</div>
         <h2 class="selo-titulo">CERTIFICADO ORIGINAL</h2>
         
-        <div class="info-balao" id="detalhes-texto">
-        </div>
+        <div class="info-balao" id="detalhes-texto"></div>
 
         <div style="margin-top: 15px; font-family: 'Cinzel', serif; color: var(--ouro); font-weight: bold; font-size: 0.9rem;">FORMULADO & AUTÊNTICO</div>
 
@@ -193,7 +193,6 @@
 </div>
 
 <script>
-    // BANCO DE DADOS INTERNO
     const BANCO_DADOS = {
         "FCLBDSJ220": { 
             item: "BANHO DESCARGA DE SÃO JORGE", 
@@ -229,7 +228,7 @@
         document.getElementById('detalhes-texto').innerHTML = `
             <p><strong>PRODUTO:</strong> ${dados.item}</p>
             <p><strong>MATÉRIA-PRIMA:</strong> ${dados.mat}</p>
-            <p><strong>CONSAGRAÇÃO:</strong> ${dados.cons || 'Consagrado na força do fundamento'}</p>
+            <p><strong>CONSAGRAÇÃO:</strong> Consagrado na força do fundamento</p>
             <p><strong>ORIGEM:</strong> ${dados.orig}</p>
             <p><strong>SÉRIE:</strong> ${code}</p>
         `;
