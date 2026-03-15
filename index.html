@@ -30,10 +30,11 @@
         header { text-align: center; margin-bottom: 60px; }
         
         .img-topo {
-            width: 100px;
+            width: 140px;          /* Aumentei um pouco para melhor impacto */
             height: auto;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.5));
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 12px rgba(197, 160, 89, 0.6)); /* Sombra mais forte para destacar no fundo escuro */
+            border-radius: 8px;    /* Leve arredondamento para estilo premium */
         }
 
         header h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 4rem); color: var(--ouro); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 5px; }
@@ -128,7 +129,7 @@
         .simbolos-flecheiro {
             display: flex;
             justify-content: center;
-            gap: 20px; /* espaçamento entre os 4 símbolos */
+            gap: 20px;
             margin-bottom: 8px;
         }
 
@@ -144,7 +145,10 @@
 
 <div class="main-wrapper">
     <header>
-        <img src="https://i.ibb.co/4Rcbdpmf/image.png" alt="Símbolo Flecheiro" class="img-topo">
+        <!-- Nova imagem: guerreiro flecheiro com arco e flecha, cocar de penas -->
+        <img src="https://images.alamy.com/hires/3D1ARF6/shaman-woman-in-native-american-indian-headdress-with-bow-and-arrow-on-pink-background-3D1ARF6.jpg" 
+             alt="Guerreiro Flecheiro com arco e flecha" 
+             class="img-topo">
         <h1>Flecheiro</h1>
         <p>A Pureza do Fundamento</p>
     </header>
@@ -164,7 +168,6 @@
 
     <footer>
         <div class="simbolos-flecheiro">
-            <!-- 4 símbolos de flecha simples, nítidos e minimalistas -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -222,16 +225,4 @@
 
     function exibirSelo(code, dados) {
         document.getElementById('detalhes-texto').innerHTML = `
-            <p><strong>PRODUTO:</strong> ${dados.item}</p>
-            <p><strong>MATÉRIA-PRIMA:</strong> ${dados.mat}</p>
-            <p><strong>CONSAGRAÇÃO:</strong> Consagrado na força do fundamento</p>
-            <p><strong>ORIGEM:</strong> ${dados.orig}</p>
-            <p><strong>SÉRIE:</strong> ${code}</p>
-        `;
-        document.getElementById('resultado').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-</script>
-
-</body>
-</html>
+            <p><strong>PRODUTO:</strong> ${dados.item}</p
