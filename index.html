@@ -4,43 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Flecheiro | Autenticidade e Pureza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
             --ouro: #c5a059;
-            --ouro-gradiente: linear-gradient(135deg, #8a6d3b 0%, #e1c27d 50%, #8a6d3b 100%);
             --verde-profundo: #04120b;
             --verde-selo: #0a2b1a;
             --branco-creme: #f4f1ea;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
         }
 
         body {
             background-color: var(--verde-profundo);
             background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
             color: var(--branco-creme);
-            font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
-            display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden;
+            font-family: 'Montserrat', Arial, sans-serif;
+            line-height: 1.5;
         }
 
-        .main-wrapper { width: 100%; max-width: 900px; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+        .main-wrapper {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
 
-        header { text-align: center; margin-bottom: 60px; }
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
         
         .img-topo {
-            width: 180px;              /* Tamanho bom para destaque sem exagerar */
+            width: 180px;
             max-height: 240px;
             height: auto;
             margin-bottom: 20px;
             filter: drop-shadow(0 0 14px rgba(197, 160, 89, 0.7));
-            object-fit: contain;       /* Mostra a imagem completa, sem cortes */
+            object-fit: contain;
             border-radius: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        header h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 4rem); color: var(--ouro); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 5px; }
-        header p { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 4px; color: var(--ouro); opacity: 0.8; }
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: var(--ouro);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: var(--ouro);
+            opacity: 0.8;
+        }
 
         .card-validacao {
             width: 100%;
@@ -62,12 +92,52 @@
             display: none;
         }
 
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        .manifesto { margin-top: 60px; padding: 30px; border-left: 2px solid var(--ouro); background: rgba(197,160,89,0.03); text-align: justify; }
-        .manifesto h3 { font-family: 'Cinzel', serif; color: var(--ouro); margin-bottom: 15px; text-align: center; }
-        .manifesto p { line-height: 1.6; margin-bottom: 15px; font-size: 0.95rem; }
+        .manifesto {
+            margin-top: 60px;
+            padding: 30px;
+            border-left: 2px solid var(--ouro);
+            background: rgba(197,160,89,0.03);
+            text-align: justify;
+        }
 
+        .manifesto h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--ouro);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .manifesto p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            padding: 30px 20px 20px;
+            font-size: 0.75rem;
+            opacity: 0.65;
+            text-align: center;
+            border-top: 1px solid rgba(197, 160, 89, 0.12);
+        }
+
+        .simbolos-flecheiro {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 8px;
+        }
+
+        .simbolos-flecheiro svg {
+            width: 40px;
+            height: auto;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 4px rgba(197, 160, 89, 0.3));
+        }
+
+        /* Overlay de validação */
         #resultado {
             display: none;
             position: fixed;
@@ -82,7 +152,7 @@
         .selo-circular {
             width: 100%;
             max-width: 500px;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1/1;
             background: var(--verde-selo);
             border-radius: 50%;
             border: 10px double var(--ouro);
@@ -97,28 +167,97 @@
         }
 
         @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body>
 
-        .selo-titulo { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--ouro); margin-bottom: 15px; border-bottom: 1px solid rgba(197, 160, 89, 0.3); padding-bottom: 10px; width: 80%; }
+<div class="main-wrapper">
+    <header>
+        <img src="https://i.ibb.co/wFHVJ9Cc/topo.png" 
+             alt="Guerreiro Flecheiro" 
+             class="img-topo">
+        <h1>Flecheiro</h1>
+        <p>A Pureza do Fundamento</p>
+    </header>
 
-        .info-balao { color: #fff; font-size: 0.85rem; line-height: 1.5; width: 90%; text-align: left; }
-        .info-balao p { margin-bottom: 10px; }
-        .info-balao strong { color: var(--ouro); text-transform: uppercase; font-size: 0.7rem; display: block; letter-spacing: 1px; }
+    <main>
+        <div class="card-validacao">
+            <div class="loader" id="loader"></div>
+            <p id="status-text" style="font-family: 'Cinzel', serif; color: var(--ouro); letter-spacing: 2px; font-size: 1.2rem;">
+                AGUARDANDO LEITURA DO PRODUTO...
+            </p>
+        </div>
 
-        .btn-voltar {
-            margin-top: 20px;
-            background: transparent;
-            border: 1px solid var(--ouro);
-            color: var(--ouro);
-            padding: 10px 25px;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
+        <section class="manifesto">
+            <h3>A Marca Flecheiro</h3>
+            <p>No universo religioso, a <strong>pureza do material</strong> é o que sustenta a força do seu ritual. A Flecheiro produz com base no fundamento e na força das ervas da mata; nós consagramos. Cada item é selecionado sob os mais rígidos preceitos de pureza.</p>
+            <p><strong>Não existe meio termo:</strong> ou é Flecheiro, ou é Flecheiro tradição e fundamento. Somente os nossos produtos estimulam e concentram força na conexão entre o médium e a entidade, entre a vontade sua, e a força espiritual sem interferências. verifique o qrcode dos Banhos Flecheiro.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="simbolos-flecheiro">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div>© 2026 Flecheiro - Tradição e Fundamento</div>
+    </footer>
+</div>
+
+<!-- Overlay de validação (mantido, mas simplificado) -->
+<div id="resultado">
+    <div class="selo-circular">
+        <div style="font-size: 40px; margin-bottom: 10px;">🏹</div>
+        <h2 class="selo-titulo">CERTIFICADO ORIGINAL</h2>
+        <div class="info-balao" id="detalhes-texto"></div>
+        <div style="margin-top: 20px; color: var(--ouro); font-weight: bold;">FORMULADO & AUTÊNTICO</div>
+        <button class="btn-voltar" onclick="window.location.href=window.location.pathname">VOLTAR</button>
+    </div>
+</div>
+
+<script>
+    const BANCO_DADOS = {
+        "FCLBDSJ220": { 
+            item: "BANHO DESCARGA DE SÃO JORGE", 
+            mat: "ERVAS SAGRADAS DA UMBANDA", 
+            lote: "26213", 
+            orig: "Sede Flecheiro - AM" 
         }
+    };
 
-        footer {
-            margin-top: auto;
-            padding: 30px 20px 20px;
-            font-size: 0.75rem;
-            opacity: 0.65;
-            text-align: center;
-            display: flex
+    window.onload = function() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        if (id) {
+            const code = id.toUpperCase().trim();
+            document.getElementById('loader').style.display = "block";
+            document.getElementById('status-text').innerText = "ANALISANDO PRODUTO...";
+
+            setTimeout(() => {
+                const produto = BANCO_DADOS[code];
+                document.getElementById('loader').style.display = "none";
+
+                if (produto) {
+                    document.getElementById('detalhes-texto').innerHTML = `
+                        <p><strong>PRODUTO:</strong> ${produto.item}</p>
+                        <p><strong>MATÉRIA-PRIMA:</strong> ${produto.mat}</p>
+                        <p><strong>LOTE:</strong> ${produto.lote}</p>
+                        <p><strong>ORIGEM:</strong> ${produto.orig}</p>
+                        <p><strong>SÉRIE:</strong> ${code}</p>
+                    `;
+                    document.getElementById('resultado').style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.getElementById('status-text').innerText = "CÓDIGO INVÁLIDO";
+                    document.getElementById('status-text').style.color = "#ff4444";
+                }
+            }, 1800);
+        }
+    };
+</script>
+
+</body>
+</html>
