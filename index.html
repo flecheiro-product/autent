@@ -30,11 +30,13 @@
         header { text-align: center; margin-bottom: 60px; }
         
         .img-topo {
-            width: 140px;          /* Aumentei um pouco para melhor impacto */
+            width: 180px;          /* Tamanho ajustado para destaque sem cortar */
+            max-height: 220px;
             height: auto;
             margin-bottom: 20px;
-            filter: drop-shadow(0 0 12px rgba(197, 160, 89, 0.6)); /* Sombra mais forte para destacar no fundo escuro */
-            border-radius: 8px;    /* Leve arredondamento para estilo premium */
+            filter: drop-shadow(0 0 12px rgba(197, 160, 89, 0.7));
+            object-fit: contain;   /* Garante que a imagem completa apareça sem cortes */
+            border-radius: 8px;
         }
 
         header h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 4rem); color: var(--ouro); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 5px; }
@@ -145,9 +147,9 @@
 
 <div class="main-wrapper">
     <header>
-        <!-- Nova imagem: guerreiro flecheiro com arco e flecha, cocar de penas -->
-        <img src="https://images.alamy.com/hires/3D1ARF6/shaman-woman-in-native-american-indian-headdress-with-bow-and-arrow-on-pink-background-3D1ARF6.jpg" 
-             alt="Guerreiro Flecheiro com arco e flecha" 
+        <!-- Imagem que você enviou: guerreiro flecheiro com arco, cocar verde, sem cortes -->
+        <img src="https://i.ibb.co/abc12345/flecheiro-guerreiro-arco.png" 
+             alt="Guerreiro Flecheiro com arco e flecha - Autenticidade e Força" 
              class="img-topo">
         <h1>Flecheiro</h1>
         <p>A Pureza do Fundamento</p>
@@ -225,4 +227,16 @@
 
     function exibirSelo(code, dados) {
         document.getElementById('detalhes-texto').innerHTML = `
-            <p><strong>PRODUTO:</strong> ${dados.item}</p
+            <p><strong>PRODUTO:</strong> ${dados.item}</p>
+            <p><strong>MATÉRIA-PRIMA:</strong> ${dados.mat}</p>
+            <p><strong>CONSAGRAÇÃO:</strong> Consagrado na força do fundamento</p>
+            <p><strong>ORIGEM:</strong> ${dados.orig}</p>
+            <p><strong>SÉRIE:</strong> ${code}</p>
+        `;
+        document.getElementById('resultado').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+</script>
+
+</body>
+</html>
