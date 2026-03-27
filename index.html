@@ -3,349 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Flecheiro | Autenticidade e Pureza</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Portal Flecheiro | Autenticidade</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --ouro: #c5a059;
-            --verde-profundo: #04120b;
-            --verde-selo: #0a2b1a;
-            --branco-creme: #f4f1ea;
-        }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            background-color: var(--verde-profundo);
-            background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
-            color: var(--branco-creme);
-            font-family: 'Montserrat', Arial, sans-serif;
-            line-height: 1.5;
-        }
-
-        .main-wrapper {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            min-height: 100vh;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .img-topo {
-            width: 180px;
-            max-height: 240px;
-            height: auto;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 14px rgba(197, 160, 89, 0.7));
-            object-fit: contain;
-            border-radius: 10px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        header h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            color: var(--ouro);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        header p {
-            font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            color: var(--ouro);
-            opacity: 0.8;
-        }
-
-        .card-validacao {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            padding: 50px 20px;
-            border-radius: 4px;
-            backdrop-filter: blur(10px);
-            text-align: center;
-        }
-
-        .loader {
-            width: 40px; height: 40px;
-            border: 2px solid rgba(197, 160, 89, 0.2);
-            border-top: 2px solid var(--ouro);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            animation: spin 1s linear infinite;
-            display: none;
-        }
-
+        :root { --ouro: #c5a059; --verde-profundo: #04120b; --verde-selo: #0a2b1a; --branco-creme: #f4f1ea; }
+        body { background-color: var(--verde-profundo); color: var(--branco-creme); font-family: 'Montserrat', sans-serif; }
+        .main-wrapper { max-width: 900px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+        header h1 { font-family: 'Cinzel', serif; color: var(--ouro); letter-spacing: 0.2em; font-size: 3rem; margin-bottom: 10px; }
+        .card-validacao { background: rgba(0,0,0,0.6); border: 1px solid rgba(197,160,89,0.3); padding: 40px; border-radius: 4px; backdrop-filter: blur(10px); }
+        #resultado { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 999; align-items: center; justify-content: center; }
+        .selo-circular { width: 90%; max-width: 450px; background: var(--verde-selo); border: 8px double var(--ouro); border-radius: 50%; padding: 40px; color: var(--branco-creme); text-align: center; }
+        .loader { width: 40px; height: 40px; border: 3px solid rgba(197,160,89,0.2); border-top-color: var(--ouro); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; }
         @keyframes spin { to { transform: rotate(360deg); } }
-
-        .manifesto {
-            margin-top: 60px;
-            padding: 30px;
-            border-left: 2px solid var(--ouro);
-            background: rgba(197,160,89,0.03);
-            text-align: justify;
-        }
-
-        .manifesto h3 {
-            font-family: 'Cinzel', serif;
-            color: var(--ouro);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .manifesto p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-
-        footer {
-            padding: 30px 20px 20px;
-            font-size: 0.75rem;
-            opacity: 0.65;
-            text-align: center;
-            border-top: 1px solid rgba(197, 160, 89, 0.12);
-        }
-
-        .simbolos-flecheiro {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 8px;
-        }
-
-        .simbolos-flecheiro svg {
-            width: 40px;
-            height: auto;
-            opacity: 0.8;
-            filter: drop-shadow(0 0 4px rgba(197, 160, 89, 0.3));
-        }
-
-        /* Overlay de validação */
-        #resultado {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.92);
-            z-index: 999;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .selo-circular {
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 1/1;
-            background: var(--verde-selo);
-            border-radius: 50%;
-            border: 10px double var(--ouro);
-            box-shadow: 0 0 50px rgba(0,0,0,1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            text-align: center;
-            animation: zoomIn 0.5s ease-out;
-        }
-
-        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .btn-voltar { margin-top: 20px; background: transparent; border: 1px solid var(--ouro); color: var(--ouro); padding: 10px 20px; cursor: pointer; font-family: 'Cinzel'; }
     </style>
 </head>
 <body>
 
 <div class="main-wrapper">
     <header>
-        <img src="https://i.ibb.co/wFHVJ9Cc/topo.png" 
-             alt="Guerreiro Flecheiro" 
-             class="img-topo">
         <h1>Flecheiro</h1>
-        <p>A Pureza do Fundamento</p>
+        <p style="font-family: 'Cinzel'; color: var(--ouro); letter-spacing: 3px;">A PUREZA DO FUNDAMENTO</p>
     </header>
 
-    <main>
-        <div class="card-validacao">
-            <div class="loader" id="loader"></div>
-            <p id="status-text" style="font-family: 'Cinzel', serif; color: var(--ouro); letter-spacing: 2px; font-size: 1.2rem;">
-                AGUARDANDO LEITURA DO PRODUTO...
-            </p>
-        </div>
-
-        <section class="manifesto">
-            <h3>A Marca Flecheiro</h3>
-            <p>No universo religioso, a <strong>pureza do material</strong> é o que sustenta a força do seu ritual. A Flecheiro produz com base no fundamento e na força das ervas da mata; nós consagramos. Cada item é selecionado sob os mais rígidos preceitos de pureza.</p>
-            <p><strong>Não existe meio termo:</strong> ou é Flecheiro, ou é Flecheiro tradição e fundamento. Somente os nossos produtos estimulam e concentram força na conexão entre o médium e a entidade, entre a vontade sua, e a força espiritual sem interferências. verifique o qrcode dos Banhos Flecheiro.</p>
-        </section>
-    </main>
-
-    <footer>
-        <div class="simbolos-flecheiro">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-        <div>© 2026 Flecheiro - Tradição e Fundamento</div>
-    </footer>
+    <div class="card-validacao" style="margin-top: 50px;">
+        <div class="loader" id="loader" style="display:none;"></div>
+        <p id="status-text" style="font-family: 'Cinzel', serif; color: var(--ouro); font-size: 1.2rem;">AGUARDANDO LEITURA DO PRODUTO...</p>
+    </div>
 </div>
 
-<!-- Overlay de validação (mantido, mas simplificado) -->
 <div id="resultado">
     <div class="selo-circular">
-        <div style="font-size: 40px; margin-bottom: 10px;">🏹</div>
-        <h2 class="selo-titulo">CERTIFICADO ORIGINAL</h2>
-        <div class="info-balao" id="detalhes-texto"></div>
-        <div style="margin-top: 20px; color: var(--ouro); font-weight: bold;">FORMULADO & AUTÊNTICO</div>
-        <button class="btn-voltar" onclick="window.location.href=window.location.pathname">VOLTAR</button>
+        <h2 style="font-family: 'Cinzel'; color: var(--ouro); margin-bottom: 20px; letter-spacing: 2px;">CERTIFICADO ORIGINAL</h2>
+        <div id="detalhes-texto" style="text-align: left; line-height: 2; font-size: 0.9rem; border-top: 1px solid rgba(197,160,89,0.3); padding-top: 15px;"></div>
+        <button class="btn-voltar" onclick="location.href=location.pathname">VOLTAR</button>
     </div>
 </div>
 
 <script>
-    const BANCO_DADOS = {
-    "FLCbchfr226": { 
-item: "BANHO CHAMA FREGUÊS", 
-mat: "ERVAS SAGRADAS DA UMBANDA", 
-lote: "26001", 
-orig: "Sede Flecheiro - AM" },
-    "FLCbspdb226": { 
-item: "BANHO SETE PODERES DA BAHIA", 
-mat: "ERVAS SAGRADAS DA UMBANDA", 
-lote: "26002", 
-orig: "Sede Flecheiro - AM" },
-    "FLCabre226": { 
-item: "BANHO ABRE CAMINHO", 
-mat: "ERVAS SAGRADAS DA UMBANDA", 
-lote: "26003", 
-orig: "Sede Flecheiro - AM" },
-    "FLCbchd226": { 
-item: "BANHO CHAMA DINHEIRO", 
-mat: "ERVAS SAGRADAS DA UMBANDA", 
-lote: "26004", 
-orig: "Sede Flecheiro - AM" },
-    "FLCblcp226": { 
-item: "BANHO LIMPA CORPO", 
-mat: "ERVAS SAGRADAS DA UMBANDA", 
-lote: "26005", 
-orig: "Sede Flecheiro - AM" },
-    "FLCbddsj26": { 
-item: "BANHO DESCARGA DE SÃO JORGE", 
-mat: "ERVAS SAGRADAS DA UMBANDA", 
-lote: "26006", 
-orig: "Sede Flecheiro - AM" },
-    "FLCdspt226": { 
-item: "BANHO DESEMPATA", 
-mat: "ERVAS SAGRADAS DA UMBANDA", 
-lote: "26007", 
-orig: "Sede Flecheiro - AM" },
-    "FLCbanh2": { 
-item: "BANHO DE CHAMA", 
-mat: "ERVAS SAGRADAS DA UMBANDA", 
-lote: "26008", 
-orig: "Sede Flecheiro - AM" },
-    "FLCogum2": { item: "OGUM", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26009", orig: "Sede Flecheiro - AM" },
-    "FLCreti2": { item: "RETIRA TUDO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26010", orig: "Sede Flecheiro - AM" },
-    "FLCsant2": { item: "SANTA BARBARA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26011", orig: "Sede Flecheiro - AM" },
-    "FLCcomi2": { item: "COMIGO NINGUÉM PODE", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26012", orig: "Sede Flecheiro - AM" },
-    "FLCfirm2": { item: "FIRMA CORRENTE", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26013", orig: "Sede Flecheiro - AM" },
-    "FLCsaid2": { item: "SAI DE MIM", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26014", orig: "Sede Flecheiro - AM" },
-    "FLCcheg2": { item: "CHEGA TE A MIM", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26015", orig: "Sede Flecheiro - AM" },
-    "FLCdesa2": { item: "DESATRAPALHA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26016", orig: "Sede Flecheiro - AM" },
-    "FLCcosm2": { item: "COSME E DAMIÃO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26017", orig: "Sede Flecheiro - AM" },
-    "FLCsete2": { item: "SETE FORÇA ESPIRITUAL", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26018", orig: "Sede Flecheiro - AM" },
-    "FLCfech2": { item: "FECHA CORPO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26019", orig: "Sede Flecheiro - AM" },
-    "FLCafas2": { item: "AFASTA ESPÍRITO MAL", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26020", orig: "Sede Flecheiro - AM" },
-    "FLCforc2": { item: "FORÇA LUZ E PODER", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26021", orig: "Sede Flecheiro - AM" },
-    "FLCdesa2": { item: "DESATA NÓ", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26022", orig: "Sede Flecheiro - AM" },
-    "FLCarre2": { item: "ARRETIRANTE", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26023", orig: "Sede Flecheiro - AM" },
-    "FLCqueb2": { item: "QUEBRA DEMANDA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26024", orig: "Sede Flecheiro - AM" },
-    "FLCcham2": { item: "CHAMA CABOCLO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26025", orig: "Sede Flecheiro - AM" },
-    "FLCabus2": { item: "ABUSO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26026", orig: "Sede Flecheiro - AM" },
-    "FLCcorr2": { item: "CORRE ATRÁS DE MIM", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26027", orig: "Sede Flecheiro - AM" },
-    "FLC7lin2": { item: "7 LINHAS", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26028", orig: "Sede Flecheiro - AM" },
-    "FLCsode2": { item: "SÓ DEUS PODE COMIGO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26029", orig: "Sede Flecheiro - AM" },
-    "FLCabra2": { item: "ABRANDA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26030", orig: "Sede Flecheiro - AM" },
-    "FLCqueb2": { item: "QUEBRA MACUMBA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26031", orig: "Sede Flecheiro - AM" },
-    "FLC7erv2": { item: "7 ERVAS", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26032", orig: "Sede Flecheiro - AM" },
-    "FLCchor2": { item: "CHORA NOS MEUS PÉS", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26033", orig: "Sede Flecheiro - AM" },
-    "FLCsaos2": { item: "SÃO SEBASTIÃO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26034", orig: "Sede Flecheiro - AM" },
-    "FLCuira2": { item: "UIRAPURU", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26035", orig: "Sede Flecheiro - AM" },
-    "FLCqueb2": { item: "QUEBRA AZAR", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26036", orig: "Sede Flecheiro - AM" },
-    "FLCfirm2": { item: "FIRMEZA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26037", orig: "Sede Flecheiro - AM" },
-    "FLCpomb2": { item: "POMBA GIRA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26038", orig: "Sede Flecheiro - AM" },
-    "FLClibe2": { item: "LIBERTAÇÃO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26039", orig: "Sede Flecheiro - AM" },
-    "FLCcasa2": { item: "CASA CHEIA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26040", orig: "Sede Flecheiro - AM" },
-    "FLCqueb2": { item: "QUEBRA FEITIÇO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26041", orig: "Sede Flecheiro - AM" },
-    "FLC7fle2": { item: "7 FLECHAS", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26042", orig: "Sede Flecheiro - AM" },
-    "FLCarre2": { item: "ARREIA CORRENTE", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26043", orig: "Sede Flecheiro - AM" },
-    "FLCafas2": { item: "AFASTA MEUS INIMIGOS", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26044", orig: "Sede Flecheiro - AM" },
-    "FLCprot2": { item: "PROTEÇÃO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26045", orig: "Sede Flecheiro - AM" },
-    "FLCaman2": { item: "AMANSA TOURO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26046", orig: "Sede Flecheiro - AM" },
-    "FLCsomb2": { item: "SOMBRA DO MUNDO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26047", orig: "Sede Flecheiro - AM" },
-    "FLCcham2": { item: "CHAMA DO AMOR", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26048", orig: "Sede Flecheiro - AM" },
-    "FLCqueb2": { item: "QUEBRA BARREIRA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26049", orig: "Sede Flecheiro - AM" },
-    "FLCvaib2": { item: "VAI BUSCAR LONGE E TRÁS PRA MIM", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26050", orig: "Sede Flecheiro - AM" },
-    "FLCsete2": { item: "SETE MISTÉRIOS DA BAHIA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26051", orig: "Sede Flecheiro - AM" },
-    "FLCvira2": { item: "VIRA PENSAMENTO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26052", orig: "Sede Flecheiro - AM" },
-    "FLCfazq2": { item: "FAZ QUERER QUEM NÃO ME QUER", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26053", orig: "Sede Flecheiro - AM" },
-    "FLCsode2": { item: "SÓ DEUS ABRE TODOS OS MEUS CAMINHOS", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26054", orig: "Sede Flecheiro - AM" },
-    "FLCiema2": { item: "IEMANJÁ", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26055", orig: "Sede Flecheiro - AM" },
-    "FLCzepe2": { item: "ZÉ PELINTRA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26056", orig: "Sede Flecheiro - AM" },
-    "FLCvenc2": { item: "VENCE DEMANDA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26057", orig: "Sede Flecheiro - AM" },
-    "FLCtira2": { item: "TIRA PESO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26058", orig: "Sede Flecheiro - AM" },
-    "FLC7enc2": { item: "7 ENCRUZILHADAS", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26059", orig: "Sede Flecheiro - AM" },
-    "FLCdesm2": { item: "DESMANCHA FEITIÇO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26060", orig: "Sede Flecheiro - AM" },
-    "FLCqueb2": { item: "QUEBRA FORÇA DO MAL", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26061", orig: "Sede Flecheiro - AM" },
-    "FLCcham2": { item: "CHAMA MEU GUIA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26062", orig: "Sede Flecheiro - AM" },
-    "FLCcham2": { item: "CHAMA DA FELICIDADE, AMOR E DINHEIRO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26063", orig: "Sede Flecheiro - AM" },
-    "FLCcroa2": { item: "CRÔA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26064", orig: "Sede Flecheiro - AM" },
-    "FLCmaej2": { item: "MÃE JOANA DA PEDREIRA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26065", orig: "Sede Flecheiro - AM" },
-    "FLCoxal2": { item: "OXALÁ", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26066", orig: "Sede Flecheiro - AM" },
-    "FLCmari2": { item: "MARIA PADILHA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26067", orig: "Sede Flecheiro - AM" },
-    "FLCdest2": { item: "DESTRANCA TUDO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26068", orig: "Sede Flecheiro - AM" },
-    "FLCvenc2": { item: "VENCE TUDO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26069", orig: "Sede Flecheiro - AM" },
-    "FLCanjo2": { item: "ANJO DA GUARDA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26070", orig: "Sede Flecheiro - AM" },
-    "FLCdese2": { item: "DESENVOLVIMENTO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26071", orig: "Sede Flecheiro - AM" },
-    "FLCcont2": { item: "CONTRA OLHO GRANDE", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26072", orig: "Sede Flecheiro - AM" },
-    "FLCjibo2": { item: "JIBOIA BRANCA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26073", orig: "Sede Flecheiro - AM" },
-    "FLCdesm2": { item: "DESMANCHA TUDO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26074", orig: "Sede Flecheiro - AM" },
-    "FLCabre2": { item: "ABRE CAMINHO DA FELICIDADE", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26075", orig: "Sede Flecheiro - AM" },
-    "FLCcham2": { item: "CHAMA DA BOA SORTE", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26076", orig: "Sede Flecheiro - AM" },
-    "FLCheid2": { item: "HEI DE VENCER", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26077", orig: "Sede Flecheiro - AM" },
-    "FLCsant2": { item: "SANTO ANTÔNIO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26078", orig: "Sede Flecheiro - AM" },
-    "FLCdese2": { item: "DESEMBARAÇA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26079", orig: "Sede Flecheiro - AM" },
-    "FLCpiao2": { item: "PIÃO ROXO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26080", orig: "Sede Flecheiro - AM" },
-    "FLCtira2": { item: "TIRA TEIMA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26081", orig: "Sede Flecheiro - AM" },
-    "FLCoxum2": { item: "OXUM", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26082", orig: "Sede Flecheiro - AM" },
-    "FLCfami2": { item: "FAMÍLIA DE LÉGUA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26083", orig: "Sede Flecheiro - AM" },
-    "FLCpega2": { item: "PEGA E NÃO ME LARGA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26084", orig: "Sede Flecheiro - AM" },
-    "FLCexut2": { item: "EXÚ TRANCA RUA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26085", orig: "Sede Flecheiro - AM" },
-    "FLCchav2": { item: "CHAVE DE OURO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26086", orig: "Sede Flecheiro - AM" },
-    "FLCcarr2": { item: "CARRAPATINHO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26087", orig: "Sede Flecheiro - AM" },
-    "FLCqueb2": { item: "QUEBRA MANDINGA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26088", orig: "Sede Flecheiro - AM" },
-    "FLCencr2": { item: "ENCRUZO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26089", orig: "Sede Flecheiro - AM" },
-    "FLCunia2": { item: "UNIÃO DO LAR", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26090", orig: "Sede Flecheiro - AM" },
-    "FLCunia2": { item: "UNIÃO", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26091", orig: "Sede Flecheiro - AM" },
-    "FLCunia2": { item: "UNIÃO DO CASAL", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26092", orig: "Sede Flecheiro - AM" },
-    "FLCvaie2": { item: "VAI E VOLTA", mat: "ERVAS SAGRADAS DA UMBANDA", lote: "26093", orig: "Sede Flecheiro - AM" }
-};
+    const MAT_PADRAO    = "ERVAS SAGRADAS DA UMBANDA";
+    const ORIGEM_PADRAO = "Flecheiro";
+    const LOTE_FIXO     = "26002";
 
+    const BANCO_DADOS = {
+        "FLCBCHFR226": { item: "BANHO CHAMA FREGUÊS" },
+        "FLCBSPDB226": { item: "BANHO SETE PODERES DA BAHIA" },
+        "FLCABRE226":  { item: "BANHO ABRE CAMINHO" },
+        "FLCBCHD226":  { item: "BANHO CHAMA DINHEIRO" },
+        "FLCBLCP226":  { item: "BANHO LIMPA CORPO" },
+        "FLCBDDSJ26":  { item: "BANHO DESCARGA DE SÃO JORGE" },
+        "FLCDSPT226":  { item: "BANHO DESEMPATA" },
+        "FLCBANH2":    { item: "BANHO DE CHAMA" },
+        "FLCOGUM2":    { item: "BANHO OGUM" },
+        "FLCRETI2":    { item: "BANHO RETIRA TUDO" },
+        "FLCSANT2":    { item: "BANHO SANTA BARBARA" },
+        "FLCCOMI2":    { item: "BAMHO COMIGO NINGUÉM PODE" },
+        "FLCFIRM2":    { item: "BANHO FIRMA CORRENTE" },
+        "FLCSAID2":    { item: "BANHO SAI DE MIM" },
+        "FLCCHEG2":    { item: "BANHO CHEGA TE A MIM" },
+        "FLCDESA2":    { item: "BANHO DESATRAPALHA" },
+        "FLCCOSM2":    { item: "BANHO COSME E DAMIÃO" },
+        "FLCSETE2":    { item: "BANHO SETE FORÇA ESPIRITUAL" },
+        "FLCFECH2":    { item: "BANHO FECHA CORPO" },
+        "FLCAFAS2":    { item: "BANHO AFASTA ESPÍRITO MAL" },
+        "FLCFORC2":    { item: "BANHO FORÇA LUZ E PODER" },
+        "FLCDESA2_B":  { item: "BANHO DESATA NÓ" },
+        "FLCARRE2":    { item: "BANHO ARRETIRANTE" },
+        "FLCQUEB2":    { item: "BANHO QUEBRA DEMANDA" },
+        "FLCCHAM2":    { item: "BANHO CHAMA CABOCLO" },
+        "FLCABUS2":    { item: "BANHO ABUSO" },
+        "FLCCORR2":    { item: "BANHO CORRE ATRÁS DE MIM" },
+        "FLC7LIN2":    { item: "BANHO 7 LINHAS" },
+        "FLCSODE2":    { item: "BANHO SÓ DEUS PODE COMIGO" },
+        "FLCABRA2":    { item: "BANHO ABRANDA" },
+        "FLCQUEB2_B":  { item: "BANHO QUEBRA MACUMBA" },
+        "FLC7ERV2":    { item: "BANHO 7 ERVAS" },
+        "FLCCHOR2":    { item: "BANHO CHORA NOS MEUS PÉS" },
+        "FLCSAOS2":    { item: "BANHO SÃO SEBASTIÃO" },
+        "FLCUIRA2":    { item: "BANHO UIRAPURU" },
+        "FLCQUEB2_C":  { item: "BANHO QUEBRA AZAR" },
+        "FLCFIRM2_B":  { item: "BANHO FIRMEZA" },
+        "FLCPOMB2":    { item: "BANHO POMBA GIRA" },
+        "FLCLIBE2":    { item: "BANHO LIBERTAÇÃO" },
+        "FLCCASA2":    { item: "BANHO CASA CHEIA" },
+        "FLCQUEB2_D":  { item: "BANHO QUEBRA FEITIÇO" },
+        "FLC7FLE2":    { item: "BANHO 7 FLECHAS" },
+        "FLCARRE2_B":  { item: "BANHO ARREIA CORRENTE" },
+        "FLCAFAS2_B":  { item: "BANHO AFASTA MEUS INIMIGOS" },
+        "FLCPROT2":    { item: "BANHO PROTEÇÃO" },
+        "FLCAMAN2":    { item: "BANHO AMANSA TOURO" },
+        "FLCSOMB2":    { item: "BANHO SOMBRA DO MUNDO" },
+        "FLCCHAM2_B":  { item: "BANHO CHAMA DO AMOR" },
+        "FLCQUEB2_E":  { item: "BANHO QUEBRA BARREIRA" },
+        "FLCVAIB2":    { item: "BANHO VAI BUSCAR LONGE" },
+        "FLCSETE2_B":  { item: "BANHO SETE MISTÉRIOS DA BAHIA" },
+        "FLCVIRA2":    { item: "BANHO VIRA PENSAMENTO" },
+        "FLCFAZQ2":    { item: "BANHO FAZ QUERER QUEM NÃO QUER" },
+        "FLCIEMA2":    { item: "BANHO IEMANJÁ" },
+        "FLCZEPE2":    { item: "BANHO ZÉ PELINTRA" },
+        "FLCVENC2":    { item: "BANHO VENCE DEMANDA" },
+        "FLCTIRA2":    { item: "BANHO TIRA PESO" },
+        "FLC7ENC2":    { item: "BANHO 7 ENCRUZILHADAS" },
+        "FLCDESM2":    { item: "BANHO DESMANCHA FEITIÇO" },
+        "FLCOXAL2":    { item: "BANHO OXALÁ" },
+        "FLCMARI2":    { item: "BANHO MARIA PADILHA" },
+        "FLCDEST2":    { item: "BANHO DESTRANCA TUDO" },
+        "FLCVENC2_B":  { item: "BANHO VENCE TUDO" },
+        "FLCANJO2":    { item: "BANHO ANJO DA GUARDA" }
+    };
 
     window.onload = function() {
         const params = new URLSearchParams(window.location.search);
@@ -363,21 +129,21 @@ orig: "Sede Flecheiro - AM" },
                 if (produto) {
                     document.getElementById('detalhes-texto').innerHTML = `
                         <p><strong>PRODUTO:</strong> ${produto.item}</p>
-                        <p><strong>MATÉRIA-PRIMA:</strong> ${produto.mat}</p>
-                        <p><strong>LOTE:</strong> ${produto.lote}</p>
-                        <p><strong>ORIGEM:</strong> ${produto.orig}</p>
+                        <p><strong>MATÉRIA-PRIMA:</strong> ${MAT_PADRAO}</p>
+                        <p><strong>LOTE:</strong> ${LOTE_FIXO}</p>
+                        <p><strong>ORIGEM:</strong> ${ORIGEM_PADRAO}</p>
                         <p><strong>SÉRIE:</strong> ${code}</p>
                     `;
                     document.getElementById('resultado').style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
                 } else {
                     document.getElementById('status-text').innerText = "CÓDIGO INVÁLIDO";
                     document.getElementById('status-text').style.color = "#ff4444";
                 }
-            }, 1800);
+            }, 1500);
         }
     };
 </script>
 
 </body>
 </html>
+
