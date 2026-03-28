@@ -32,7 +32,7 @@
     "FLCCHAM2": { "item": "BANHO CHAMA CABOCLO" },
     "FLCABUS2": { "item": "BANHO ABUSO" },
     "FLCCORR2": { "item": "CORRE ATRÁS DE MIM" },
-    "FLC7LIN2": { "item": "BANHI 7 LINHAS" },
+    "FLC7LIN2": { "item": "BANHO 7 LINHAS" },
     "FLCSODE2": { "item": "BANHO SÓ DEUS PODE COMIGO" },
     "FLCABRA2": { "item": "BANHO ABRANDA" },
     "FLCQUEB2_B": { "item": "BANHO QUEBRA MACUMBA" },
@@ -61,13 +61,14 @@
     "FLCIEMA2": { "item": "BANHO IEMANJÁ" },
     "FLCZEPE2": { "item": "BANHO ZÉ PELINTRA" },
     "FLCVENC2": { "item": "BANHO VENCE DEMANDA" },
-    "FLCTIRA2": { "item": "TIRA PESO" },
-    "FLC7ENC2": { "item": "7 ENCRUZILHADAS" },
-    "FLCDESM2": { "item": "DESMANCHA FEITIÇO" },
-    "FLCOXAL2": { "item": "OXALÁ" },
-    "FLCMARI2": { "item": "MARIA PADILHA" },
-    "FLCDEST2": { "item": "DESTRANCA TUDO" },
-    "FLCVENC2_B": { "item": "VENCE TUDO" },
-    "FLCANJO2": { "item": "ANJO DA GUARDA" }
+    "FLCTIRA2": { "item": "BANHO TIRA PESO" },
+    "FLC7ENC2": { "item": "BANHO 7 ENCRUZILHADAS" },
+    "FLCDESM2": { "item": "BANHO DESMANCHA FEITIÇO" },
+    "FLCOXAL2": { "item": "BANHO OXALÁ" },
+    "FLCMARI2": { "item": "BANHO MARIA PADILHA" },
+    "FLCDEST2": { "item": "BANHO DESTRANCA TUDO" },
+    "FLCVENC2_B": { "item": "BANHO VENCE TUDO" },
+    "FLCVENC2_D": { "item": "BANHO VENCO" },
+    "FLCANJO2": { "item": "BANHO ANJO DA GUARDA" }
   }
 }
